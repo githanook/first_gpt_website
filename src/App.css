@@ -1,0 +1,67 @@
+﻿.app-shell { min-height: 100svh; }
+.brand-bar { max-width: 1120px; margin: auto; padding: 30px 32px; display: flex; justify-content: space-between; align-items: center; }
+.brand { display: flex; align-items: center; gap: 10px; color: #284d3e; text-decoration: none; font-size: 23px; font-weight: 800; }
+.brand-icon { width: 32px; height: 32px; border-radius: 10px; background: #335e4d; color: white; display: grid; place-items: center; font-size: 20px; }
+.brand-subtitle { margin-left: 13px; padding-left: 20px; border-left: 1px solid #d9e1db; color: #737f77; font-size: 12px; font-weight: 400; }
+.header-note { font-size: 12px; color: #738178; }
+main { width: min(100% - 40px, 680px); margin: 55px auto 0; padding-bottom: 40px; }
+.intro { margin-bottom: 29px; }
+.eyebrow { font-size: 12px; font-weight: 600; color: #527660; letter-spacing: 1px; }
+h1 { font-size: clamp(30px, 5vw, 40px); letter-spacing: -1.7px; line-height: 1.3; margin: 11px 0 12px; }
+.intro p { margin: 0; color: #738077; font-size: 14px; line-height: 1.7; word-break: keep-all; }
+.progress-card { background: #eaf1e9; border: 1px solid #dfe9dc; padding: 22px 25px; border-radius: 16px; margin-bottom: 24px; }
+.progress-heading { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 600; }
+.progress-heading strong { font-size: 25px; color: #365e48; }
+.progress-heading small { font-size: 13px; margin-left: 3px; }
+.progress-track { height: 6px; background: #d7e2d4; border-radius: 9px; overflow: hidden; margin: 14px 0; }
+.progress-track div { height: 100%; background: #588260; border-radius: inherit; transition: width .25s ease; }
+.progress-card p { display: flex; justify-content: space-between; margin: 0; color: #667b64; font-size: 12px; }
+.todo-card { background: #fff; border: 1px solid #e2e7e0; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 30px #2e4d3010; }
+.add-form { display: flex; align-items: center; gap: 10px; margin: 24px; padding: 7px 7px 7px 14px; border: 1px solid #dce4dd; border-radius: 11px; background: #fcfdfb; }
+.add-form:focus-within { border-color: #789b81; box-shadow: 0 0 0 3px #ecf3eb; }
+.input-plus { color: #8b9d8c; font-size: 24px; }
+.add-form input { border: 0; outline: none; background: transparent; width: 100%; min-width: 0; padding: 9px 0; font-size: 14px; color: #283d37; }
+.add-form input::placeholder { color: #8a968c; }
+.add-form input:focus-visible { outline: none; }
+.add-button { flex-shrink: 0; background: #355e4b; color: white; border: 0; border-radius: 7px; padding: 11px 17px; font-size: 13px; }
+.add-button:hover { background: #224b37; }
+.add-button span { margin-left: 7px; }
+.list-toolbar { display: flex; justify-content: space-between; align-items: center; padding: 0 24px 18px; border-bottom: 1px solid #eef1eb; gap: 12px; }
+.filters { display: flex; gap: 5px; }
+.filters button { display: flex; align-items: center; gap: 6px; color: #748078; background: transparent; border: 0; border-radius: 7px; font-size: 12px; padding: 8px 10px; }
+.filters button.selected { color: #345c47; background: #edf3e9; font-weight: 700; }
+.filters button:hover { background: #f0f4ed; }
+.filters button span { font-size: 10px; min-width: 15px; }
+.list-caption { font-size: 11px; color: #8a948c; }
+.todo-list { list-style: none; margin: 0; padding: 6px 24px; }
+.todo-item { display: flex; align-items: center; gap: 12px; min-height: 70px; border-bottom: 1px solid #eef1eb; }
+.todo-item:last-child { border-bottom: 0; }
+.todo-label { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; padding: 15px 0; cursor: pointer; }
+.todo-label input { width: 19px; height: 19px; flex-shrink: 0; margin: 0; accent-color: #527958; cursor: pointer; }
+.todo-label span { font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; white-space: pre-wrap; }
+.completed .todo-label span { color: #929c94; text-decoration: line-through; }
+.delete-button { width: 40px; height: 40px; display: grid; place-items: center; flex-shrink: 0; border: 0; border-radius: 8px; color: #89948a; background: transparent; }
+.delete-button:hover { color: #ab5353; background: #fff1ee; }
+.empty-state { text-align: center; padding: 49px 20px 54px; }
+.empty-icon { display: grid; place-items: center; margin: 0 auto 18px; width: 52px; height: 58px; border: 1px solid #dde6d8; border-radius: 12px; background: #f4f7ef; color: #8caa7d; font-size: 27px; transform: rotate(-7deg); }
+.empty-state h2 { font-size: 15px; font-weight: 600; margin: 0 0 10px; color: #53634f; }
+.empty-state p { font-size: 12px; line-height: 1.7; color: #889382; margin: 0; word-break: keep-all; }
+.list-footer { display: flex; justify-content: space-between; gap: 12px; padding: 17px 24px; background: #fcfdfb; border-top: 1px solid #eef1eb; color: #71806c; font-size: 11px; }
+.list-footer span { color: #96a08f; }
+.page-footer { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 25px; font-size: 11px; color: #8a9587; }
+.error-message { color: #a14038; font-size: 12px; line-height: 1.7; margin: -10px 24px 18px; }
+@media (max-width: 600px) {
+  .brand-bar { padding: 22px 20px; }
+  .brand-subtitle, .header-note, .list-caption { display: none; }
+  main { margin-top: 28px; }
+  .progress-card { padding: 20px; }
+  .add-form { margin: 18px 16px; gap: 6px; padding-left: 10px; }
+  .add-button { padding: 11px 13px; }
+  .add-button span { display: none; }
+  .list-toolbar { padding: 0 16px 16px; }
+  .todo-list { padding: 4px 16px; }
+  .list-footer { padding: 16px; }
+  .list-footer span { display: none; }
+  .error-message { margin-left: 16px; margin-right: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
