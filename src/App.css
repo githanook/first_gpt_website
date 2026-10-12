@@ -37,7 +37,7 @@ h1 { font-size: clamp(30px, 5vw, 40px); letter-spacing: -1.7px; line-height: 1.3
 .todo-item { display: flex; align-items: center; gap: 12px; min-height: 70px; border-bottom: 1px solid #eef1eb; }
 .todo-item:last-child { border-bottom: 0; }
 .todo-label { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; padding: 15px 0; cursor: pointer; }
-.todo-label input { width: 19px; height: 19px; flex-shrink: 0; margin: 0; accent-color: #527958; cursor: pointer; }
+.todo-label input[type="checkbox"] {.todo-label input { width: 19px; height: 19px; flex-shrink: 0; margin: 0; accent-color: #527958; cursor: pointer; }
 .todo-label span { font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; white-space: pre-wrap; }
 .completed .todo-label span { color: #929c94; text-decoration: line-through; }
 .delete-button { width: 40px; height: 40px; display: grid; place-items: center; flex-shrink: 0; border: 0; border-radius: 8px; color: #89948a; background: transparent; }
@@ -65,3 +65,37 @@ h1 { font-size: clamp(30px, 5vw, 40px); letter-spacing: -1.7px; line-height: 1.3
   .error-message { margin-left: 16px; margin-right: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+.edit-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.edit-save,
+.edit-cancel {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.edit-save {
+  background: #365c4b;
+  color: white;
+}
+
+.edit-cancel {
+  background: white;
+  color: #365c4b;
+}

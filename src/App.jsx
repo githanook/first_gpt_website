@@ -58,8 +58,12 @@ function getEmptyState(filter, totalCount) {
   }
 }
 
+
+
 function App() {
   // 상태: 저장된 목록, 입력 내용, 선택한 필터, 오류 안내
+  const [editingId, setEditingId] = useState(null);
+  const [editingText, setEditingText] = useState('');
   const [initial] = useState(loadTodos)
   const [todos, setTodos] = useState(initial.todos)
   const [storageError, setStorageError] = useState(initial.error)
@@ -110,6 +114,31 @@ function App() {
   function handleTextChange(event) {
     setText(event.target.value)
     setInputError('')
+  }
+
+  function handleStartEdit(todo) {
+    setEditingId(todo.id);
+    setEditingText(todo.text);
+  }
+
+  function handleSaveEdit() {
+    const trimmedText = editingText.trim()
+
+    if (!trimmedText) {
+      alert('할 일을 입력해주세요.')
+      return
+    }
+
+    const nextTodos = todos.map(todo =>
+      todo.id === editingId
+        ? { ...todo, text: trimmedText }
+        : todo
+    )
+
+    updateTodos(nextTodos)
+
+    setEditingId(null)
+    setEditingText('')
   }
 
   function handleAddTodo(event) {
@@ -234,34 +263,84 @@ function App() {
               {visibleTodos.map(todo => (
                 <li
                   key={todo.id}
-                  className={todo.completed ? 'todo-item completed' : 'todo-item'}
+                  className={
+                    todo.completed
+                      ? 'todo-item completed'
+                      : 'todo-item'
+                  }
                 >
-                  <label className="todo-label">
-                    <input
-                      type="checkbox"
-                      checked={todo.completed}
-                      onChange={() => handleToggleTodo(todo.id)}
-                    />
-                    <span>{todo.text}</span>
-                  </label>
-                  <button
-                    className="delete-button"
-                    type="button"
-                    aria-label={`${todo.text} 삭제`}
-                    onClick={() => handleDeleteTodo(todo.id)}
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.6"
-                      aria-hidden="true"
-                    >
-                      <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7" />
-                    </svg>
-                  </button>
+                  {editingId === todo.id ? (
+                    // 수정 중일 때 보여줄 화면
+                    <div className="edit-form">
+                      <input
+                        className="edit-input"
+                        type="text"
+                        value={editingText}
+                        onChange={(event) =>
+                          setEditingText(event.target.value)
+                        }
+                        maxLength={300}
+                        aria-label="할 일 수정"
+                      />
+
+                      <button
+                        className="edit-save"
+                        type="button"
+                        onClick={handleSaveEdit}
+                      >
+                        저장
+                      </button>
+
+                      <button
+                        className="edit-cancel"
+                        type="button"
+                        onClick={() => setEditingId(null)}
+                      >
+                        취소
+                      </button>
+                    </div>
+                  ) : (
+                    // 평소에 보여줄 화면
+                    <>
+                      <label className="todo-label">
+                        <input
+                          type="checkbox"
+                          checked={todo.completed}
+                          onChange={() =>
+                            handleToggleTodo(todo.id)
+                          }
+                        />
+                        <span>{todo.text}</span>
+                      </label>
+
+                      <button
+                        className="delete-button"
+                        type="button"
+                        aria-label={`${todo.text} 삭제`}
+                        onClick={() => handleDeleteTodo(todo.id)}
+                      >
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                          aria-hidden="true"
+                        >
+                          <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v7M14 10v7" />
+                        </svg>
+                      </button>
+
+                      <button
+                        className="edit-trigger"
+                        type="button"
+                        onClick={() => handleStartEdit(todo)}
+                      >
+                        수정
+                      </button>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
